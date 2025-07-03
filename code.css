@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+        }
+        
+        .clock-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            perspective: 1000px;
+        }
+        
+        .clock {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .time {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .time-segment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .segment {
+            font-size: 6rem;
+            font-weight: 700;
+            color: #00fffc;
+            text-shadow: 0 0 10px rgba(0, 255, 252, 0.7);
+            position: relative;
+            line-height: 1;
+        }
+        
+        .segment::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 255, 252, 0.1) 50%, transparent 100%);
+            animation: shine 3s infinite;
+        }
+        
+        .separator {
+            font-size: 6rem;
+            color: #00fffc;
+            animation: pulse 1s infinite;
+            line-height: 1;
+        }
+        
+        .date {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(0, 255, 252, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotateX(0deg) rotateY(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+            }
+        }
+        
+        @keyframes shine {
+            0% {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .segment {
+                font-size: 3rem;
+            }
+            .separator {
+                font-size: 3rem;
+            }
+            .date {
+                font-size: 1rem;
+            }
+        }
