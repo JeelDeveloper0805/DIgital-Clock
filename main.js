@@ -21,9 +21,6 @@
             // Add subtle animation to seconds
             const secondsElement = document.getElementById('seconds');
             secondsElement.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                secondsElement.style.transform = 'scale(1)';
-            }, 200);
             
             setTimeout(updateClock, 1000);
         }
